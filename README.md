@@ -2,7 +2,9 @@
 # Resample move particle filter
 
 > Following a moving target -- Monte Carlo inference for dynamic Bayesian models
+>
 > Walter R. Gilks, Carlo Berzuini
+>
 > Journal of the Royal Statistical Society: Series B (Statistical Methodology) (2001), pp. 127-146
 
 This is unfinished but is meant to become an implementation of a resample-move particle filter
