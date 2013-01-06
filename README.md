@@ -21,3 +21,7 @@ appears to be a significantly robust and high performing algorithm.
 
 If you'd like a particle filter implementation that is already complete and heavily used I 
 recommend the excellent [dysii](http://www.indii.org/research/dysii) package.
+
+# Licence
+
+This software licenced under the MIT licence.
