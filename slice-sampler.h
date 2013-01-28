@@ -4,6 +4,7 @@
 #include "mcmc.h"
 
 #include <cmath>
+#include <functional>
 
 
 
@@ -15,13 +16,14 @@ struct SliceSampler : public MCMC<T>
 {
     /**
       * Create a slice sampler.
+      * @param uniformRandom    a uniform random number generator [0,1)
       * @param densityFunction  the probability density function
       * @param sliceWidths      the estimated slice widths for each variable
       */
-    SliceSampler(double (*uniformRandom)(),
-                 double (*densityFunction)(const T& state),
+    // g++ 4.4 supports std::function using c++0x
+    SliceSampler(std::function<double()> uniformRandom,
+                 std::function<double(const T&)> densityFunction,
                  const T& sliceWidths);
-
     /**
       * MCMC move state
       * @return true if the move was successful
@@ -30,10 +32,10 @@ struct SliceSampler : public MCMC<T>
 
 private:
     // Function that returns a uniformly distributed random number (0,1]
-    double (*uniformRandom_)();
+    std::function<double()> uniformRandom_;
 
     // Probabilty density function
-    double (*densityFunction_)(const T& state);
+    std::function<double(const T&)> densityFunction_;
 
     // Estimated slice widths
     T sliceWidths_;
@@ -48,8 +50,8 @@ private:
 //------------- Implementation -------------------------------------------------
 
 template <typename T>
-SliceSampler<T>::SliceSampler(double (*uniformRandom)(),
-                              double (*densityFunction)(const T& state),
+SliceSampler<T>::SliceSampler(std::function<double()> uniformRandom,
+                              std::function<double(const T&)> densityFunction,
                               const T& sliceWidths) :
     uniformRandom_(uniformRandom),
     densityFunction_(densityFunction),

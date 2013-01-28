@@ -7,8 +7,8 @@
 template <typename T>
 struct MCMC {
     /**
-      * Move the given state in order to sample a probabilty distribution function
-      */
+     * Move the given state in order to sample a probabilty distribution function
+     */
     virtual bool move(T& state) = 0;
 };
 

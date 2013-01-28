@@ -1,8 +1,9 @@
 TEMPLATE = app
-CONFIG += console
-CONFIG -= qt
+CONFIG += console debug
+CONFIG -= qt release
 
 SOURCES += main.cpp
+QMAKE_CXXFLAGS += -std=c++11
 
 HEADERS += \
     mcmc.h \
