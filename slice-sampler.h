@@ -7,7 +7,6 @@
 #include <functional>
 
 
-
 /**
   * A multivariate slice sampler
   */
